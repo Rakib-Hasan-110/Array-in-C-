@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+void printArrayForward(int arr[], int n) {
+    cout << "Forward" << endl;
+    for (int i = 0; i < n; ++i) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+void printArrayBackward(int arr[], int n) {
+    cout << "Backward" << endl;
+    for (int i = n - 1; i >= 0; --i) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+int main() {
+ int n;
+    // Prompt the user for the number of elements in the array
+    cout << "Enter the number of elements in the array: ";
+    cin >> n;
+    // Create an array of size n
+    int arr[n];
+    // Input elements in the array
+    cout << "Enter " << n << " elements: ";
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    // Print the array in forward & backward order
+    printArrayForward(arr, n);
+    printArrayBackward(arr, n);
+    return 0;
+}
