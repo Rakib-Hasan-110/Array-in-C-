@@ -1,0 +1,57 @@
+#include <iostream>
+using namespace std;
+
+void deleteValue(int arr[], int &size, int value) {
+    //The & symbol indicates that size is passed by reference
+    //so any changes made to size within the function will affect the original variable passed to the function.
+    int index = -1;
+    // Find the index of the value to delete
+    for (int i = 0; i < size; ++i) {
+        if (arr[i] == value) {
+            index = i;
+            break;yj
+        }
+    }
+
+    // If value is not found, print a message and return
+    if (index == -1) {
+        cout << "Value not found in the array" << endl;
+        return;
+    }
+
+    // Shift elements to the left to delete the value
+    for (int i = index; i < size - 1; ++i) {
+        arr[i] = arr[i + 1];
+    }
+
+    size--; // Decrease the size of the array
+}
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; ++i) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+int main() {
+
+    int size, value;
+    cout << "Enter the number of elements in the array: ";
+    cin >> size;
+    int arr[size];
+    cout << "Enter the elements of the array:" << endl;
+    for (int i = 0; i < size; ++i) {
+        cin >> arr[i];
+    }
+
+    cout << "Enter the value to delete: ";
+    cin >> value;
+
+    deleteValue(arr, size, value);
+
+    cout << "Modified Array" << endl;
+    printArray(arr, size);
+
+    return 0;
+}
