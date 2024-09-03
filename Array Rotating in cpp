@@ -1,0 +1,48 @@
+#include <iostream>
+using namespace std;
+
+void rotateArray(int arr[], int size, int rotateCount, int direction) {
+    int temp[size];
+
+    for (int i = 0; i < size; i++) {
+        if (direction == 1) { // Rotate left
+            temp[i] = arr[(i + rotateCount) % size];
+        } else { // Rotate right
+            temp[i] = arr[(i - rotateCount + size) % size];
+        }
+    }
+
+    // Copy temp array back to the original array
+    for (int i = 0; i < size; i++) {
+        arr[i] = temp[i];
+    }
+    cout<< "\t \n";
+}
+
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout<< arr[i];
+    }
+    cout<< "\t \n";
+}
+int main() {
+    int rotateCount, direction;
+
+     // Define the array
+    int arr[] = {10, 20, 30, 40, 50, 70};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    cout <<"Original Array\t\n";
+    printArray(arr, size);
+ // Input for rotate count and direction
+    cout << "\nEnter rotate count and direction (0 for right, 1 for left): \n";
+    cin>> rotateCount >> direction;
+
+    // Rotate the array
+    rotateArray(arr, size, rotateCount, direction);
+
+   cout <<"Rotated Array\n";
+    printArray(arr, size);
+
+    return 0;
+}
